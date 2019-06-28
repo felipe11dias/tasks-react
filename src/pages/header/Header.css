@@ -1,0 +1,12 @@
+.Header {
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+    background-color: green;
+}
+
+.Header a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
