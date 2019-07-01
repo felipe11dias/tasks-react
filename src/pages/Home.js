@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './Home.css';
 import axios from 'axios';
+import Show from './Show';
+
 
 class Home extends Component {
 
-    state = {tasks: []};
-
+    state = {
+        tasks : []
+      };
 
     // loadTasks(){
     //     let response = fetch(`http://localhost:3001/tasks`);
@@ -13,15 +16,29 @@ class Home extends Component {
     //     this.setState = ({tasks: tasks})
     // }
 
-    async componentDidMount(){
-        const response = await axios.get(`http://localhost:3001/tasks`);
-        console.log(this);
-        console.log(response);
-
-        this.setState({ tasks : response.data});
-        console.log(this.state);
-
+    loadTasks(){
+        axios.get(`http://localhost:3001/tasks`)
+            .then(res => {
+                const tasks = res.data;
+                this.setState({ tasks : tasks });
+        })
     }
+      
+    componentDidMount(){
+        // axios.get(`http://localhost:3001/tasks`)
+        //     .then(res => {
+        //         const tasks = res.data;
+        //         this.setState({ tasks : tasks });
+        // })
+        // const response = await axios.get(`http://localhost:3001/tasks`);
+        // //console.log(this);
+
+        // this.setState({ tasks : response.data});
+        // //console.log(this.state);
+
+        this.loadTasks();
+    }
+
 
 
   render(){
@@ -32,10 +49,10 @@ class Home extends Component {
                 <thead>
                     <tr>
                         <th>
-                            Title
+                            Id
                         </th>
                         <th>
-                            Status
+                            Title
                         </th>
                         <th>
                             Show | Edit | Delete
@@ -43,15 +60,18 @@ class Home extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                   {console.log(this.state.tasks)}
-                    {this.state.tasks.map(function(item){
+                   {/*  {console.log(this.state.tasks)} */}
+                    {this.state.tasks.map(function(task){
                          return (
-                            <tr key={item.id}>
-                                <td>{item.title}</td>
-                                <td>{item.done}</td>
+                            <tr key={task.id}>
+                                <td>{task.id}</td>
+                                <td>{task.title}</td>
+                                <td>
+                                    <Show idProps={task.id}/>
+                                </td>
                             </tr>
                         );
-                        })}
+                    })}
                 </tbody>
             </table>
         </center>
