@@ -21,6 +21,7 @@ class Home extends Component {
             .then(res => {
                 const tasks = res.data;
                 this.setState({ tasks : tasks });
+                console.log(this.state.tasks);
         })
     }
       
@@ -55,6 +56,9 @@ class Home extends Component {
                             Title
                         </th>
                         <th>
+                            Status
+                        </th>
+                        <th>
                             Show | Edit | Delete
                         </th>
                     </tr>
@@ -62,10 +66,15 @@ class Home extends Component {
                 <tbody>
                    {/*  {console.log(this.state.tasks)} */}
                     {this.state.tasks.map(function(task){
+                        console.log("task no for");
+                        console.log(task);
+                        
+                        
                          return (
                             <tr key={task.id}>
                                 <td>{task.id}</td>
                                 <td>{task.title}</td>
+                                <td>{task.done ? "true" : "false"}</td>
                                 <td>
                                     <Show idProps={task.id}/>
                                 </td>

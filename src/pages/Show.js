@@ -42,6 +42,7 @@ class Show extends Component{
 
         this.setState({ task : response.data});
         console.log(this.state);
+        console.log(this.props.idProps);
     }
 
     componentDidMount()
@@ -52,15 +53,15 @@ class Show extends Component{
   render() {
         return (
             <div>
-                <Button variant="primary" onClick={this.handleShow } >
+                <Button variant="primary" onClick={this.handleShow} >
                     Show
                 </Button>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Tarefa {this.state.task.Title}</Modal.Title>
+                    <Modal.Title>Tarefa {this.state.task.id}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body></Modal.Body>
+                <Modal.Body>{this.state.task.title}. <br/> Status da tarefa: {this.state.task.done ? "Realizada" : "Não realizada"}</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.handleClose}>
                         Fechar
