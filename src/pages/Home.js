@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import axios from 'axios';
 import Show from './Show';
+import Edit from './Edit';
 
 
 class Home extends Component {
@@ -15,6 +16,21 @@ class Home extends Component {
     //     const tasks = response.json;
     //     this.setState = ({tasks: tasks})
     // }
+
+    handleSubmit = event => {
+        event.preventDefault();
+
+        const task = {
+            title: this.state.title,
+            done: this.state.done
+        };
+
+        axios.put(`http://localhost:3001/tasks/${this.props.idProps}`, { task })
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        });
+    }
 
     loadTasks(){
         axios.get(`http://localhost:3001/tasks`)
@@ -76,7 +92,8 @@ class Home extends Component {
                                 <td>{task.title}</td>
                                 <td>{task.done ? "true" : "false"}</td>
                                 <td>
-                                    <Show idProps={task.id}/>
+                                    <Show idProps={task.id}/>&nbsp;
+                                    <Edit idProps={task.id} propsChange={this.handleSubmit} />
                                 </td>
                             </tr>
                         );

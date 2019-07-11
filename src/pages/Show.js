@@ -9,23 +9,24 @@ class Show extends Component{
         super(props);
 
         this.state = {
-            show: false, task : Object
+            show: false, task : Object, colorDone: false
           };
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        //this.taskShow = this.taskShow.bind(this);
+        //this.showTasks = this.showTasks.bind(this);
 
         }
-      handleClose() {
-        this.setState({ show: false });
-      }
 
-      handleShow() {
-        this.setState({ show: true });
-      }
+        handleClose() {
+            this.setState({ show: false });
+        }
 
-    // taskShow = (task) => {
+        handleShow() {
+            this.setState({ show: true });
+        }
+
+    // showTasks = (task) => {
     //     console.log("Entrou " + this);
 
     //     axios.get(`http://localhost:3001/tasks/?id=${task}` , {
@@ -36,7 +37,7 @@ class Show extends Component{
     //     })
     // };
 
-    async taskShow(){
+    async showTasks(){
         const response = await axios.get(`http://localhost:3001/tasks/${this.props.idProps}`);
         //console.log(this);
 
@@ -47,12 +48,12 @@ class Show extends Component{
 
     componentDidMount()
     {
-        this.taskShow();
+        this.showTasks();
     }
 
   render() {
         return (
-            <div>
+            <div style={{width: "fit-content", display: "inline-flex"}}>
                 <Button variant="primary" onClick={this.handleShow} >
                     Show
                 </Button>
@@ -61,7 +62,7 @@ class Show extends Component{
                 <Modal.Header closeButton>
                     <Modal.Title>Tarefa {this.state.task.id}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>{this.state.task.title}. <br/> Status da tarefa: {this.state.task.done ? "Realizada" : "Não realizada"}</Modal.Body>
+            <Modal.Body>{this.state.task.title}. <br/> Status da tarefa: {this.state.task.done ? <div style={{color:'green', width:'fit-content', display:"inline-flex"}}>Realizada</div> : <div style={{color:'red', width:'fit-content', display:"inline-flex"}}>Não realizada</div> }</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.handleClose}>
                         Fechar

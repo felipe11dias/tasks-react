@@ -5,12 +5,12 @@ import About from './pages/About';
 const routesConfig = [
     {
         path:"/",
-        component:App,
+        component: App ,
         exact:true
     },
     {
         path:"/about",
-        component:About,
+        component: About ,
         exact:true
     },
 ]
