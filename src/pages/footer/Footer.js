@@ -5,9 +5,9 @@ class Footer extends Component {
   render(){
 
         return (
-        <div className="Footer">
-            Copyright
-        </div>
+            <div className="Footer">
+                Copyright
+            </div>
         );
     }
 }

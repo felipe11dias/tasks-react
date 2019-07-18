@@ -4,7 +4,7 @@
     background-color: #008000;
     color: white;
     text-align: center;
-    position: absolute;
+    /* margin-top: 29px; */
+    /* position: absolute; */
     width: 100%;
-    font: none;
 }

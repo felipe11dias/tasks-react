@@ -73,7 +73,7 @@ class Edit extends Component {
         return (
             <div style={{width: "fit-content", display: "inline-flex"}}>
                 <div>
-                    <Button variant="primary" onClick={this.handleShow} >
+                    <Button variant="warning" onClick={this.handleShow} >
                         Edit
                     </Button>
 

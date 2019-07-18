@@ -3,6 +3,9 @@ import './Home.css';
 import axios from 'axios';
 import Show from './Show';
 import Edit from './Edit';
+import New from './New';
+import Delete from './Delete';
+import Table from 'react-bootstrap/Table'
 
 
 class Home extends Component {
@@ -17,20 +20,20 @@ class Home extends Component {
     //     this.setState = ({tasks: tasks})
     // }
 
-    handleSubmit = event => {
-        event.preventDefault();
+    // handleSubmit = event => {
+    //     event.preventDefault();
 
-        const task = {
-            title: this.state.title,
-            done: this.state.done
-        };
+    //     const task = {
+    //         title: this.state.title,
+    //         done: this.state.done
+    //     };
 
-        axios.put(`http://localhost:3001/tasks/${this.props.idProps}`, { task })
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-        });
-    }
+    //     axios.put(`http://localhost:3001/tasks/${this.props.idProps}`, { task })
+    //     .then(res => {
+    //         console.log(res);
+    //         console.log(res.data);
+    //     });
+    // }
 
     loadTasks(){
         axios.get(`http://localhost:3001/tasks`)
@@ -61,46 +64,49 @@ class Home extends Component {
   render(){
 
         return (
-        <center>
-            <table border ='1 #c0c0c0 solid' id="tableTasks">
-                <thead>
-                    <tr>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Title
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                        <th>
-                            Show | Edit | Delete
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                   {/*  {console.log(this.state.tasks)} */}
-                    {this.state.tasks.map(function(task){
-                        console.log("task no for");
-                        console.log(task);
-                        
-                        
-                         return (
-                            <tr key={task.id}>
-                                <td>{task.id}</td>
-                                <td>{task.title}</td>
-                                <td>{task.done ? "true" : "false"}</td>
-                                <td>
-                                    <Show idProps={task.id}/>&nbsp;
-                                    <Edit idProps={task.id} propsChange={this.handleSubmit} />
-                                </td>
+            <div className="h-100">
+                <New/>
+                <center>
+                    <Table striped bordered hover border ='1 #c0c0c0 solid' id="tableTasks">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                 Show | Edit | Delete
+                                </th>
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-        </center>
+                        </thead>
+                        <tbody>
+                        {/*  {console.log(this.state.tasks)} */}
+                            {this.state.tasks.map(function(task){
+                                //console.log("task no for");
+                                //console.log(task);
+
+                                return (
+
+                                    <tr key={task.id}>
+                                        <td>{task.title}</td>
+                                        <td>{task.done ? "true" : "false"}</td>
+                                        <td>
+                                            <div style={{ margin : "5px 0"}}>
+                                                <Show idProps={task.id}/>&nbsp;
+                                                <Edit idProps={task.id}/>&nbsp;
+                                                <Delete idProps={task.id}/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </Table>
+                </center>
+                <div className="push"></div>
+            </div>
         );
     }
 }

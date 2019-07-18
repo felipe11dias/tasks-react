@@ -1,11 +1,11 @@
 
-import App from './App';
+import Home from './pages/Home';
 import About from './pages/About';
 
 const routesConfig = [
     {
-        path:"/",
-        component: App ,
+        path:"/home",
+        component: Home ,
         exact:true
     },
     {

@@ -59,18 +59,18 @@ class Show extends Component{
                 </Button>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Tarefa {this.state.task.id}</Modal.Title>
-                </Modal.Header>
-            <Modal.Body>{this.state.task.title}. <br/> Status da tarefa: {this.state.task.done ? <div style={{color:'green', width:'fit-content', display:"inline-flex"}}>Realizada</div> : <div style={{color:'red', width:'fit-content', display:"inline-flex"}}>Não realizada</div> }</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                        Fechar
-                    </Button>
-                    <Button variant="primary" onClick={this.handleClose}>
-                        Ok
-                    </Button>
-                </Modal.Footer>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Tarefa {this.state.task.id}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{this.state.task.title}. <br/> Status da tarefa: {this.state.task.done ? <div style={{color:'green', width:'fit-content', display:"inline-flex"}}>Realizada</div> : <div style={{color:'red', width:'fit-content', display:"inline-flex"}}>Não realizada</div> }</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleClose}>
+                            Fechar
+                        </Button>
+                        <Button variant="primary" onClick={this.handleClose}>
+                            Ok
+                        </Button>
+                    </Modal.Footer>
                 </Modal>
             </div>
         );

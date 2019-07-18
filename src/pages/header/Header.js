@@ -8,9 +8,9 @@ class Header extends Component {
   render(){
 
         return (
-        <div>
+        <div id="h-100">
             <div className="Header">
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
                 <Link to="/about">About</Link>
             </div>
             {routesConfig.map((value, key) => {
@@ -22,6 +22,7 @@ class Header extends Component {
             ></Route>
             })}
         </div>
+
         );
     }
 }

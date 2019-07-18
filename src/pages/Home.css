@@ -1,5 +1,10 @@
 #tableTasks {
     font-size: 20px;
-    width: 800px;
+    width: 1000px;
     margin-top: 15px;  
+}
+
+table td, th {
+    text-align: center;
+    margin: 5px 0;
 }

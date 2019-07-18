@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
-
-import Header from './pages/header/Header';
 import Footer from './pages/footer/Footer';
-import Home from './pages/Home';
+import Header from './pages/header/Header';
+
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <Home/>
-      <Footer/>
-    </div>
+    <body>
+      <div className="wrapper">
+        <Header/>
+      </div>
+      <div>
+        <Footer/>
+      </div>
+    </body>
   );
 }
 

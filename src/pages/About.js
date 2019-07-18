@@ -5,10 +5,9 @@ class About extends Component {
   render(){
 
         return (
-            <div>
-                Entrou aq
+            <div id="h-100">
+                <div className="push"></div>
             </div>
-            
         );
     }
 }
