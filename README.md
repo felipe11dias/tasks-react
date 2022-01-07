@@ -15,6 +15,6 @@ Módulo de interface para tasks react - [API Correspondente](https://github.com/
 ## Instalação
 Faça o clone do projeto no git, canto superior direito no repositório do projeto(Botão 'Code').
 
-Na pasta do projeto utilize do [NPM](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/) para gerenciar as dependências e siga os passos:
+Na pasta do projeto utilize do [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/) para gerenciar as dependências e siga os passos:
 - Use o comando: yarn install ou npm i(Baixara todas as dependências do projeto)
 - Use o comando: yarn run ou npm start(Irá iniciar o projeto, levantando a aplicação e deixando pronto para se utilizar)
